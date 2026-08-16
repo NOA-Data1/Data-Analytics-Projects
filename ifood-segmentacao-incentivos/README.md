@@ -1,37 +1,106 @@
-# Segmentação e Efetividade de Incentivos
+# Segmentação e Efetividade de Incentivos: Do Grupo Controle à Decisão de Negócio
 
-**Da resposta de campanha ao plano de ação: segmentação, teste de hipótese com grupo controle, propensão e monitoramento de KPI.**
+**Um estudo de caso completo de BI que responde à pergunta que toda operação de incentivo precisa fazer antes de comemorar uma campanha: o incentivo realmente muda o comportamento, ou quem aceita já era diferente antes?**
 
-Este projeto usa o **iFood Data Business Analyst Test**, dataset publicado pelo próprio time iFood Brain para avaliar candidatos a Analista de Dados (`github.com/ifood/ifood-data-business-analyst-test`). Ele descreve clientes e sua resposta a campanhas promocionais.
+Este projeto usa o **iFood Data Business Analyst Test**, dataset publicado pelo próprio time iFood Brain (`github.com/ifood/ifood-data-business-analyst-test`) para avaliar candidatos a Analista de Dados. O escopo cobre desde a auditoria da fonte, passando por construção de KPI, segmentação comportamental, teste de hipótese com desenho de grupo controle, modelo de propensão a incentivo, até monitoramento de KPI com regra de alerta e plano de ação.
 
-> **Nota de transparência.** O dataset original é sobre resposta de clientes a campanhas de marketing, e não é o Programa Super de fidelização de entregadores do iFood. Não existe dado público sobre esse programa específico. Este projeto demonstra a metodologia, com segmentação, desenho de grupo controle, modelo de propensão, monitoramento de KPI e dashboard, aplicada a um problema de incentivo e engajamento estruturalmente equivalente, usando dado real e publicamente rastreável da própria empresa.
+> **Nota de transparência.** O dataset original descreve resposta de clientes a campanhas de marketing, e não é o Programa Super de fidelização de entregadores do iFood. Não existe dado público sobre esse programa específico. Este projeto demonstra a metodologia, transferível a qualquer operação de incentivo, usando dado real e publicamente rastreável da própria empresa.
 
-## A pergunta central
+---
 
-> O incentivo realmente muda o comportamento do cliente, ou quem aceita já era diferente antes?
+## Tech Stack e Habilidades
 
-Sem responder isso com rigor estatístico, qualquer "resultado de campanha" é coincidência disfarçada de causa. Esse é o fio condutor do projeto.
+Este repositório é um case de análise orientada a decisão, com rigor estatístico como fio condutor:
 
-## Resultado principal
+- **Python (pandas, scikit-learn, scipy):** limpeza de dados, segmentação K-means, teste de hipótese e modelo de propensão.
+- **Estatística aplicada:** teste de Mann-Whitney U e qui-quadrado para validar diferença entre grupos antes de qualquer leitura de causa.
+- **Visualização (Matplotlib, Seaborn, Plotly):** gráficos gerados a partir de execução real dos notebooks, não ilustrações soltas.
+- **Dashboards (Streamlit, Tableau Public, Looker Studio):** o mesmo resultado, apresentado nas três ferramentas mais citadas em vagas de Analista de BI.
 
-- 2.021 clientes analisados após remoção de duplicatas (8,3% da base original).
-- Taxa de resposta geral à campanha: **15,4%**.
-- Clientes que aceitam a campanha têm renda, frequência de compra e recência estatisticamente diferentes de quem não aceita, com Mann-Whitney U e p abaixo de 0,001 em todas as variáveis. A taxa de resposta bruta superestima o efeito puro do incentivo.
-- Quatro segmentos comportamentais identificados via K-means, com taxas de resposta que vão de 4,6% no segmento de risco de desengajamento a 23,7% no segmento de alto valor ativo.
-- Um modelo de propensão simples permite contatar 20% da base e capturar 61,5% de todos os respondentes esperados, um ganho de eficiência real sobre campanha em massa.
+## Status do Projeto
 
-## Estrutura do projeto
+| Frente de Trabalho | Status |
+|---|---|
+| Auditoria de fonte e qualidade de dados | Completo |
+| Construção de KPI (frequência, ganhos, retenção) | Completo |
+| Segmentação comportamental (K-means) | Completo |
+| Teste de hipótese com desenho de grupo controle | Completo |
+| Modelo de propensão a incentivo | Completo |
+| Monitoramento de KPI e regra de alerta | Completo |
+| Dashboard Streamlit | Completo |
+| Dashboard Tableau Public | Próxima etapa |
+| Dashboard Looker Studio | Próxima etapa |
+
+## Raio-X de Resultados
+
+| KPI | Resultado Auditado | Conceito |
+|---|---:|---|
+| **Clientes analisados** | **2.021** | Após remoção de 184 duplicatas exatas, 8,3% da base original |
+| **Taxa de resposta geral** | **15,4%** | Aceitação da campanha mais recente |
+| **Diferença de perfil entre grupos** | **p < 0,001** | Renda, frequência e recência, teste de Mann-Whitney U |
+| **Faixa de resposta entre segmentos** | **4,6% a 23,7%** | Do segmento de risco de desengajamento ao segmento de alto valor ativo |
+| **Ganho de eficiência do modelo** | **61,5% em 20% do público** | Captura de respondentes contatando só os de maior propensão |
+
+## Indicadores de Negócio e Insights
+
+1. **Viés de seleção:** o grupo que aceita campanha já chega diferente. Isso muda como qualquer resultado de campanha deveria ser lido.
+2. **Segmentação comportamental:** quatro perfis de cliente, com resposta a incentivo variando em mais de cinco vezes entre o pior e o melhor segmento.
+3. **Eficiência de contato:** priorizar por propensão captura a maioria dos respondentes usando uma fração do público.
+4. **Monitoramento operacional:** meta por segmento, não meta única, evita alertar demais em cluster naturalmente mais frio e de menos em cluster de alto valor.
+5. **Critério de elegibilidade:** o modelo de propensão dá base numérica para propor mudança de público-alvo à liderança do programa.
+
+## Pipeline de Inteligência
+
+```mermaid
+flowchart TD
+    A[Dataset oficial iFood] --> B[Auditoria de qualidade e limpeza]
+    B --> C[Construção de KPI: frequência, ganhos, retenção]
+    C --> D[Segmentação K-means]
+    D --> E[Teste de hipótese e grupo controle]
+    E --> F[Modelo de propensão a incentivo]
+    F --> G[Monitoramento de KPI e plano de ação]
+    G --> H[Dashboard executivo]
+```
+
+## Qualidade e Integridade de Dados
+
+| Estágio | Volume de Linhas | Delta |
+|---|---:|---:|
+| Base Original (Raw) | 2.205 | — |
+| Base Limpa (Final) | 2.021 | −184 |
+
+A limpeza foi conservadora, para não distorcer a leitura estatística:
+
+- **Duplicatas exatas:** removidas antes de qualquer análise, para não inflar o peso de alguns clientes na segmentação e no teste de hipótese.
+- **Valores ausentes:** nenhum encontrado na base.
+- **Variável-alvo:** excluída das variáveis de segmentação, para a clusterização refletir comportamento, não a própria resposta.
+
+## Insights Críticos de Interpretação
+
+- **Grupo controle observacional, não experimental:** o dataset não documenta atribuição aleatória de campanha. A leitura de efeito é cuidadosa, com o viés nomeado explicitamente.
+- **Base pequena para produção:** 2.021 clientes e 311 respondentes é suficiente para demonstrar metodologia, insuficiente para os padrões de um modelo em produção real.
+- **Sem série temporal real:** não há carimbo de data por transação. Os ciclos usados no monitoramento são simulados para demonstrar a lógica de alerta, não uma previsão real.
+- **Domínio transferível, dado literal não:** o dataset descreve clientes consumidores, não entregadores. A metodologia se aplica a qualquer programa de incentivo; os números específicos, não.
+
+![Segmentação de clientes por renda e ganhos gerados, colorida por cluster](images/segmentacao_clusters.png)
+
+![Comparação de perfil entre quem aceita e quem não aceita a campanha](images/teste_de_hipotese_grupos.png)
+
+![Curva de eficiência do modelo de propensão por percentual de público contatado](images/curva_eficiencia_propensao.png)
+
+## Estrutura do Repositório
 
 ```text
-ifood-incentivos/
+ifood-segmentacao-incentivos/
 ├── data/                # Dataset original e versões tratadas
 ├── notebooks/           # Fluxo analítico em seis partes
 ├── reports/             # Métricas reproduzíveis (JSON)
 ├── exports/             # CSVs agregados prontos para Tableau/Looker Studio
+├── images/              # Gráficos extraídos dos notebooks, usados neste README
 └── dashboard/app.py     # Dashboard Streamlit
 ```
 
-## Roteiro dos notebooks
+## Roteiro de Análise
 
 | Notebook | Objetivo |
 |---|---|
@@ -44,30 +113,35 @@ ifood-incentivos/
 
 ## Dashboards
 
-O projeto inclui três formas de visualizar o mesmo resultado, propositalmente, para demonstrar fluência nas três ferramentas citadas na vaga de Analista de BI:
+O projeto apresenta o mesmo resultado em três ferramentas, propositalmente, para demonstrar fluência nas ferramentas mais citadas em vagas de Analista de BI:
 
-- Streamlit, em `dashboard/app.py`: protótipo interativo completo, com as quatro visões do projeto.
-- Tableau Public: construído a partir dos CSVs em `exports/`, ver passo a passo no README de publicação.
-- Looker Studio: construído a partir dos mesmos CSVs, ver passo a passo no README de publicação.
+- **Streamlit**, em `dashboard/app.py`: protótipo interativo completo, com quatro visões do projeto.
+- **Tableau Public:** construído a partir dos CSVs em `exports/`.
+- **Looker Studio:** construído a partir dos mesmos CSVs.
 
-## Reproduzir a análise
+## Como Reproduzir o Projeto
+
+Instale as dependências:
 
 ```bash
 python -m pip install pandas numpy scikit-learn scipy matplotlib seaborn plotly streamlit
 jupyter notebook notebooks/
 ```
 
-## Limitações
+Execute os notebooks na ordem numérica. Para rodar o dashboard localmente:
 
-- O dataset não documenta atribuição aleatória de campanha. O grupo controle é observacional, não experimental.
-- A base é pequena (2.021 clientes) para os padrões de um modelo de produção.
-- Não há carimbo de data por transação. Os ciclos no notebook 06 são simulados para demonstrar a lógica de alerta, não uma série temporal real.
-- O dataset descreve clientes consumidores, não entregadores. A metodologia é transferível, os dados literais não.
+```bash
+streamlit run dashboard/app.py
+```
 
-## Ferramentas utilizadas
+## Ferramentas Utilizadas
 
-Python · pandas · scikit-learn · scipy · Plotly · Streamlit · Tableau Public · Looker Studio
+Python · pandas · scikit-learn · scipy · Matplotlib · Seaborn · Plotly · Streamlit · Tableau Public · Looker Studio
 
-## Fonte
+## Fonte e Licença
 
-[iFood Data Business Analyst Test](https://github.com/ifood/ifood-data-business-analyst-test), o case oficial do time iFood Brain.
+Dataset: [iFood Data Business Analyst Test](https://github.com/ifood/ifood-data-business-analyst-test), case oficial do time iFood Brain.
+
+Código e documentação: [MIT License](LICENSE).
+
+Desenvolvido por `Nayane Araujo`
