@@ -1,0 +1,42 @@
+{
+  "logistic_regression": {
+    "average_precision": 0.5284,
+    "roc_auc": 0.8221
+  },
+  "random_forest": {
+    "average_precision": 0.443,
+    "roc_auc": 0.8078
+  },
+  "importancia_features_rf": {
+    "Recency": 0.212,
+    "ganhos_gerados": 0.207,
+    "Income": 0.152,
+    "NumWebVisitsMonth": 0.112,
+    "frequencia_total": 0.101,
+    "Teenhome": 0.071,
+    "Age": 0.07,
+    "cluster": 0.059,
+    "Kidhome": 0.015,
+    "Complain": 0.0
+  },
+  "capacidade": {
+    "top_10pct": {
+      "n": 50,
+      "capturados": 28,
+      "total_positivos": 78,
+      "taxa": 0.359
+    },
+    "top_20pct": {
+      "n": 101,
+      "capturados": 48,
+      "total_positivos": 78,
+      "taxa": 0.615
+    },
+    "top_30pct": {
+      "n": 151,
+      "capturados": 54,
+      "total_positivos": 78,
+      "taxa": 0.692
+    }
+  }
+}

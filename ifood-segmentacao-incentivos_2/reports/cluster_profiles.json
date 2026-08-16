@@ -1,0 +1,49 @@
+{
+  "k_escolhido": 4,
+  "inertias": {
+    "2": 5980.6,
+    "3": 5149.1,
+    "4": 4436.1,
+    "5": 3930.6,
+    "6": 3493.0,
+    "7": 3197.9
+  },
+  "perfis": {
+    "0": {
+      "income": 35017.3,
+      "frequencia": 8.7,
+      "ganhos": 106.6,
+      "recency": 24.0,
+      "idade": 47.4,
+      "taxa_resposta": 0.2,
+      "tamanho": 534
+    },
+    "1": {
+      "income": 71675.3,
+      "frequencia": 21.7,
+      "ganhos": 1194.6,
+      "recency": 50.0,
+      "idade": 43.5,
+      "taxa_resposta": 0.2,
+      "tamanho": 452
+    },
+    "2": {
+      "income": 66239.4,
+      "frequencia": 21.0,
+      "ganhos": 925.6,
+      "recency": 47.5,
+      "idade": 63.3,
+      "taxa_resposta": 0.2,
+      "tamanho": 519
+    },
+    "3": {
+      "income": 36793.1,
+      "frequencia": 9.2,
+      "ganhos": 120.4,
+      "recency": 75.0,
+      "idade": 49.4,
+      "taxa_resposta": 0.0,
+      "tamanho": 516
+    }
+  }
+}
