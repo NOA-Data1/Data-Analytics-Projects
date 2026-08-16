@@ -1,0 +1,25 @@
+ciclo_simulado,segmento,clientes,ganhos_medios,taxa_de_resposta,frequencia_media
+1,Alto valor ativo,81,1134.53,0.28,21.15
+1,Alto valor maduro,89,967.47,0.2,21.03
+1,Entrada / baixo investimento,105,107.37,0.14,8.9
+1,Risco de desengajamento,89,125.04,0.07,9.21
+2,Alto valor ativo,82,1210.93,0.28,21.0
+2,Alto valor maduro,83,874.46,0.16,20.76
+2,Entrada / baixo investimento,78,86.72,0.21,7.92
+2,Risco de desengajamento,72,103.57,0.04,8.92
+3,Alto valor ativo,76,1208.59,0.21,22.96
+3,Alto valor maduro,78,981.54,0.23,20.73
+3,Entrada / baixo investimento,85,107.79,0.11,8.82
+3,Risco de desengajamento,93,122.6,0.04,9.33
+4,Alto valor ativo,70,1190.69,0.23,21.63
+4,Alto valor maduro,89,934.56,0.19,21.69
+4,Entrada / baixo investimento,82,102.24,0.15,8.65
+4,Risco de desengajamento,96,124.23,0.05,9.25
+5,Alto valor ativo,82,1282.0,0.2,21.82
+5,Alto valor maduro,80,895.55,0.19,20.55
+5,Entrada / baixo investimento,90,109.64,0.16,8.67
+5,Risco de desengajamento,79,116.42,0.04,9.06
+6,Alto valor ativo,61,1121.97,0.21,21.89
+6,Alto valor maduro,100,903.15,0.18,21.15
+6,Entrada / baixo investimento,94,122.21,0.16,9.06
+6,Risco de desengajamento,87,126.77,0.03,9.33
